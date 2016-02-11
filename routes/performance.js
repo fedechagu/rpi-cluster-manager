@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express'),
+    router = express.Router(),
+    util  = require('util'),
+    spawn = require('child_process').spawn;
 
 /* GET cpu usage */
 router.get('/cpu', function(req, res, next) {
-  res.send('80%');
+  var memory  = spawn('sh', ['../bash_scripts_available_memory.sh']);
+  ls.stdout.on('data', function (data) {
+    res.send(data);
+  });
 });
 
 /* GET memory usage */
