@@ -8,4 +8,4 @@ RUN cd /etc/apt/sources.list.d/
 RUN sudo curl -O http://repo.mosquitto.org/debian/mosquitto-jessie.list
 RUN sudo apt-get update
 RUN sudo apt-get install mosquitto mosquitto-clients
-CMD ["bash", "/usr/sbin/mosquitto", "-d", "-p 3000"]
+CMD ["/bin/bash", "/usr/sbin/mosquitto", "-d", "-p 3000"]
