@@ -1,11 +1,10 @@
 FROM resin/rpi-raspbian
-RUN sudo apt-get update
-RUN sudo apt-get install curl
+RUN apt-get update &&n apt-get install curl
 RUN curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
-RUN sudo apt-key add mosquitto-repo.gpg.key
+RUN apt-key add mosquitto-repo.gpg.key
 RUN rm mosquitto-repo.gpg.key
 RUN cd /etc/apt/sources.list.d/
-RUN sudo curl -O http://repo.mosquitto.org/debian/mosquitto-jessie.list
-RUN sudo apt-get update
-RUN sudo apt-get install mosquitto mosquitto-clients
-CMD ["/bin/bash", "/usr/sbin/mosquitto", "-d", "-p 3000"]
+RUN curl -O http://repo.mosquitto.org/debian/mosquitto-jessie.list
+RUN apt-get update & apt-get install mosquitto mosquitto-clients
+EXPOSE 3000 3000
+CMD ["bin/sh", "/usr/sbin/mosquitto", "-d", "-p 3000"]
