@@ -4,6 +4,7 @@ var os = require('os'),
   client  = mqtt.connect('mqtt://localhost:1883');
 
 setInterval(function() {
+
   var performance = {
     'cpus': os.cpus(),
     'totalMemory': os.totalmem(),
@@ -14,7 +15,7 @@ setInterval(function() {
 
   client.publish('performance', stringify(performance));
 
-}, 1);
+}, 0);
 
 client.on('connect', function() {
   client.subscribe('performance', function() {
