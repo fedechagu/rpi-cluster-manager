@@ -6,5 +6,5 @@ RUN rm mosquitto-repo.gpg.key
 RUN cd /etc/apt/sources.list.d/
 RUN curl -O http://repo.mosquitto.org/debian/mosquitto-jessie.list
 RUN apt-get update && apt-get install mosquitto mosquitto-clients
-EXPOSE 3000 3000
+EXPOSE 3000
 CMD ["./usr/sbin/mosquitto", "-p", "3000"]

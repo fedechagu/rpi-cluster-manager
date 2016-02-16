@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var performance = require('./routes/performance');
+var system = require('./schedulers/system')
 
 var app = express();
 
