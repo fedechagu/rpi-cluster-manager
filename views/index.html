@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+
+  <title>Dashboard</title>
+
+</head>
+
+<body>
+  <div class="container">
+    <br/>
+    <div class="card-deck-wrapper">
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Available Memory</h4>
+            <p><span id ="freeMemory">0</span> / <span id="totalMemory">0</span></p>
+            <progress id = "availableMemory" class="progress" value="0" max="100">25%</progress>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Test1</h4>
+            <p>Content</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Test2</h4>
+            <p>Content</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.min.js"></script>
+  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <script src="javascript/vendor/mqtt.js"></script>
+  <script src="javascript/system.js"></script>
+</body>
+</html>

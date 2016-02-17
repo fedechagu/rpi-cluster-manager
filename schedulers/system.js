@@ -1,7 +1,7 @@
 var os = require('os'),
-  mqtt = require('mqtt'),
-  stringify = require('json-stringify'),
-  client  = mqtt.connect('mqtt://localhost:1883');
+    mqtt = require('mqtt'),
+    stringify = require('json-stringify'),
+    client  = mqtt.connect('mqtt://localhost:1884');
 
 setInterval(function() {
 
@@ -13,15 +13,6 @@ setInterval(function() {
     'platform': os.platform()
   };
 
-  client.publish('performance', stringify(performance));
+  client.publish('system/performance', stringify(performance));
 
-}, 0);
-
-client.on('connect', function() {
-  client.subscribe('performance', function() {
-    client.on('message', function (topic, message, packet) {
-      console.log("Received '" + message + "' on '" + topic + "'");
-    });
-  });
-
-});
+}, 1000);
