@@ -1,0 +1,23 @@
+{
+  "name": "rpi-cluster-manager",
+  "description": "",
+  "main": "",
+  "authors": [
+    "fedechagu <fedechagu@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/fedechagu/rpi-cluster-manager",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2",
+    "paho-mqtt-js": "^1.0.1"
+  }
+}

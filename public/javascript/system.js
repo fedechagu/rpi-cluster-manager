@@ -31,6 +31,8 @@ function onMessageArrived(message) {
   var systemInfo = JSON.parse(message.payloadString);
   var availableMemoryPercent = Math.round(systemInfo.freeMemory / systemInfo.totalMemory * 100);
   document.querySelector('#availableMemory').value = availableMemoryPercent;
+  document.querySelector('#platform').innerHTML = systemInfo.platform;
+  debugger;
   document.querySelector('#freeMemory').innerHTML = Math.round(systemInfo.freeMemory/1000000).toLocaleString();
   document.querySelector('#totalMemory').innerHTML = Math.round(systemInfo.totalMemory/1000000).toLocaleString();
 }
