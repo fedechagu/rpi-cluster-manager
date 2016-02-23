@@ -7,7 +7,7 @@ import Layout from "./pages/Layout";
 //render(<SystemInfo />, document.getElementById('memory'));
 //client = new Client('localhost', Number(9002), "Ui");
 //client.connect();
-console.log('hello fede ')
+
 const app = document.getElementById('app');
 
 ReactDOM.render(
