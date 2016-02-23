@@ -1,11 +1,13 @@
+var debug = process.env.NODE_ENV !== "production";
 var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: __dirname + '/public/javascript/main.js',
+    devtool: debug ? "inline-sourcemap" : null,
+    entry: __dirname + '/public/js/client.js',
     output: {
         path: __dirname,
-        filename: '/public/javascript/bundle.js'
+        filename: '/public/js/bundle.min.js'
     },
     module: {
         loaders: [
@@ -13,27 +15,21 @@ module.exports = {
                 loader: 'babel-loader',
                 test: path.join(__dirname),
                 query: {
-                  presets: ['es2015', 'react']
+                  presets: ['es2015', 'react'],
+                  plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
                 },
             }
         ]
     },
-    plugins: [
-        // Avoid publishing files when compilation fails
-        new webpack.NoErrorsPlugin()
-    ],
+    plugins: debug ? [] : [
+       new webpack.optimize.DedupePlugin(),
+       new webpack.optimize.OccurenceOrderPlugin(),
+       new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+     ],
     stats: {
         // Nice colored output
         colors: true
     },
     // Create Sourcemaps for the bundle
-    devtool: 'source-map',
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: __dirname + "/app/index.tmpl.html"
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
-
+    devtool: 'source-map'
 };
