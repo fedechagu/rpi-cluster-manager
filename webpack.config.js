@@ -11,7 +11,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
+        loader: ['babel-loader'],
         query: {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
@@ -20,7 +20,7 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/public/js/",
+    path: __dirname + "/public/",
     filename: "client.min.js"
   },
   plugins: debug ? [] : [
