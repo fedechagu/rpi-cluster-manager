@@ -4,12 +4,13 @@ import { Link } from "react-router";
 //import Footer from "../components/layout/Footer";
 import Nav from "../components/layout/Nav";
 import Card from '../components/Card'
+import Progress from "../components/Progress"
 
 export default class Layout extends React.Component {
   render() {
     const { location } = this.props;
     const containerStyle = {
-      marginTop: "60px"
+      marginTop: "20px"
     };
 
     return (
@@ -21,8 +22,15 @@ export default class Layout extends React.Component {
               <h1>Dashboard</h1>
                 <div class="card-deck-wrapper">
                   <div class="card-deck">
-                    <Card title="Available Memory" body="200 / 123" />
-                    <Card title="Platform" body="Linux" />
+                    <Card title="Available Memory">
+                      <Progress />
+                    </Card>
+                    <Card title="Platform">
+                      Linux
+                    </Card>
+                    <Card title="Load Average">
+                      [0, 2, 2]
+                    </Card>
                   </div>
                 </div>
               {this.props.children}
