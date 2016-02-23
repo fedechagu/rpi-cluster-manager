@@ -1,35 +1,31 @@
 var debug = process.env.NODE_ENV !== "production";
-var path = require('path');
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
-    devtool: debug ? "inline-sourcemap" : null,
-    entry: __dirname + '/public/js/client.js',
-    output: {
-        path: __dirname,
-        filename: '/public/js/bundle.min.js'
-    },
-    module: {
-        loaders: [
-            {
-                loader: 'babel-loader',
-                test: path.join(__dirname),
-                query: {
-                  presets: ['es2015', 'react'],
-                  plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-                },
-            }
-        ]
-    },
-    plugins: debug ? [] : [
-       new webpack.optimize.DedupePlugin(),
-       new webpack.optimize.OccurenceOrderPlugin(),
-       new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-     ],
-    stats: {
-        // Nice colored output
-        colors: true
-    },
-    // Create Sourcemaps for the bundle
-    devtool: 'source-map'
+  context: path.join(__dirname, "public"),
+  devtool: debug ? "inline-sourcemap" : null,
+  entry: "./js/client.js",
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-0'],
+          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+        }
+      }
+    ]
+  },
+  output: {
+    path: __dirname + "/public/js/",
+    filename: "client.min.js"
+  },
+  plugins: debug ? [] : [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+  ],
 };
