@@ -4,10 +4,6 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
 import Layout from "./pages/Layout";
 
-//render(<SystemInfo />, document.getElementById('memory'));
-//client = new Client('localhost', Number(9002), "Ui");
-//client.connect();
-
 const app = document.getElementById('app');
 
 ReactDOM.render(
