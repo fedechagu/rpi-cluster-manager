@@ -7,7 +7,7 @@ import Progress from "../components/Progress"
 import DeviceActions from "../actions/DeviceActions";
 import DeviceStore from "../stores/DeviceStore";
 
-export default class Layout extends React.Component {
+class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,3 +56,5 @@ export default class Layout extends React.Component {
     );
   }
 }
+
+export default Layout;

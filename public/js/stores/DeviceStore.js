@@ -1,7 +1,7 @@
 import Reflux from "reflux";
 import DeviceActions from "../actions/DeviceActions";
 
-const devices = [
+let devices = [
   {
     id: 1,
     name: 'jenkins',
@@ -48,11 +48,7 @@ let DeviceStore = Reflux.createStore({
       status: 'online'
     };
 
-    const newDevices = devices;
-    newDevices.push(device);
-
-    return newDevices;
-
+    devices.push(device);
   },
 
   getDevices() {

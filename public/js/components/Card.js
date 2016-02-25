@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Card extends React.Component {
+class Card extends React.Component {
   render() {
     const title = this.props.title
     const cardStyle = {
@@ -27,3 +27,5 @@ export default class Card extends React.Component {
     );
   }
 };
+
+export default Card;

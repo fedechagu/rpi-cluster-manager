@@ -12,7 +12,7 @@ client.on('message', function (topic, message) {
   //console.log(perf);
 });
 
-export default class Progress extends React.Component {
+class Progress extends React.Component {
 
   constructor() {
     super();
@@ -30,3 +30,5 @@ export default class Progress extends React.Component {
     );
   }
 }
+
+export default Progress;
