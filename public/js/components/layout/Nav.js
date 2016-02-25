@@ -4,7 +4,6 @@ import { Link } from "react-router";
 export default class Nav extends React.Component {
   render() {
     return (
-
       <div>
         <nav class="navbar navbar-dark bg-primary" style={{backgroundColor: '#4D606E!important'}}>
           <div class="container">
@@ -20,7 +19,6 @@ export default class Nav extends React.Component {
           </div>
         </nav>
       </div>
-
     );
   }
 }

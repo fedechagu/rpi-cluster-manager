@@ -14,7 +14,6 @@ export default class Card extends React.Component {
       color: 'white'
     }
     return (
-
         <div class="card text-xs-center" style={cardStyle}>
           <img class="card-img-top" src="../../images/rpi_logo.png" class="" style={imageStyle}/>
           <div class="card-block">
@@ -25,7 +24,6 @@ export default class Card extends React.Component {
             Last Update: { Math.round(Math.random() * 100, 2) } seconds ago
           </div>
         </div>
-
     );
   }
 };

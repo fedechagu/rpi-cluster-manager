@@ -9,7 +9,7 @@ client.on('connect', function () {
 
 client.on('message', function (topic, message) {
   let perf = JSON.parse(message.toString());
-  console.log(perf);
+  //console.log(perf);
 });
 
 export default class Progress extends React.Component {
