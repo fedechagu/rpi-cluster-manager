@@ -14,18 +14,24 @@ class Dashboard extends React.Component {
     }
   }
 
+  componentWillMount() {
+    DeviceActions.loadDevices();
+  }
+
   componentDidMount() {
-    this.unsubscribe = DeviceStore.listen(this.handleAdd);
-    this.setState({devices:DeviceStore.getDevices()});
+    this.unsubscribe = DeviceStore.listen(this.updateState.bind(this));
   }
 
   componentWillUnmount() {
     this.unsubscribe();
   }
 
+  updateState(newState) {
+    this.setState({devices: newState});
+  }
+
   handleAdd = () => {
     DeviceStore.addDevice();
-    this.setState({devices:DeviceStore.getDevices()});
   }
 
   render() {

@@ -14,7 +14,7 @@ class Card extends React.Component {
       color: 'white'
     }
     return (
-      <Link to={link ? link : null}>
+      <Link to={link}>
         <div class="card text-xs-center">
           <img class="card-img-top" src="../../images/rpi_logo.png" class="" style={imageStyle}/>
             <div class="card-block">

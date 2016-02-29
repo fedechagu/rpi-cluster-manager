@@ -1,44 +1,21 @@
 import Reflux from "reflux";
 import DeviceActions from "../actions/DeviceActions";
 
-let devices = [
-  {
-    id: 1,
-    name: 'jenkins',
-    status: 'online'
-  },
-  {
-    id: 2,
-    name: 'mosquitto',
-    status: 'online'
-  },
-  {
-    id: 3,
-    name: 'nginx',
-    status: 'online'
-  },
-  {
-    id: 4,
-    name: 'spark-master',
-    status: 'online'
-  },
-  {
-    id: 5,
-    name: 'spark-slave-1',
-    status: 'online'
-  },
-  {
-    id: 6,
-    name: 'spark-slave-2',
-    status: 'offline'
-  }
-];
-
 let DeviceStore = Reflux.createStore({
   listenables: [DeviceActions],
 
   init() {
-    
+
+  },
+
+  getInitialState() {
+    this.devices = [];
+    return this.devices;
+  },
+
+  onLoadDevicesCompleted(results) {
+    this.devices = results;
+    this.trigger(this.devices);
   },
 
   addDevice() {
@@ -48,11 +25,12 @@ let DeviceStore = Reflux.createStore({
       status: 'online'
     };
 
-    devices.push(device);
+    this.devices.push(device);
+    this.trigger(this.devices);
   },
 
-  getDevices() {
-    return devices;
+  updateDevices() {
+    this.trigger(this.devices);
   }
 
 });

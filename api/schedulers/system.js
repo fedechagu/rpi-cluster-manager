@@ -5,14 +5,9 @@ var os = require('os'),
     client  = mqtt.connect('mqtt://localhost:1884');
 
 var connection = null;
-r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
+r.connect( {host: 'localhost', port: 28015, db: 'rpi_cluster'}, function(err, conn) {
     if (err) throw err;
     connection = conn;
-
-    //r.db('test').tableCreate('performance').run(connection, function(err, result) {
-    //    if (err) throw err;
-
-    //});
 });
 
 setInterval(function() {
@@ -27,6 +22,6 @@ setInterval(function() {
 
   client.publish('system/performance', stringify(performance));
 
-  r.table('performance').insert(performance).run(connection);
+  //r.table('devices').insert(performance).run(connection);
 
 }, 1000);
