@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from "react-router";
 
 class Card extends React.Component {
   render() {
-    const title = this.props.title
-    const cardStyle = {
-    }
+    const { title, link } = this.props;
+
     const imageStyle = {
       width: 4 + 'em',
       marginTop: 1 + 'em'
@@ -14,16 +14,18 @@ class Card extends React.Component {
       color: 'white'
     }
     return (
-        <div class="card text-xs-center" style={cardStyle}>
+      <Link to={link ? link : null}>
+        <div class="card text-xs-center">
           <img class="card-img-top" src="../../images/rpi_logo.png" class="" style={imageStyle}/>
-          <div class="card-block">
-            <h4 class="card-title">{ title }</h4>
-            <p class="card-text">{this.props.children}</p>
-          </div>
+            <div class="card-block">
+              <h4 class="card-title">{ title }</h4>
+              <p class="card-text">{this.props.children}</p>
+            </div>
           <div class="card-footer text-muted" style={cardFooterStyle}>
             Last Update: { Math.round(Math.random() * 100, 2) } seconds ago
           </div>
         </div>
+      </Link>
     );
   }
 };

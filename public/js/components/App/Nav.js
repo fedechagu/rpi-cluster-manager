@@ -7,13 +7,13 @@ class Nav extends React.Component {
       <div>
         <nav class="navbar navbar-dark bg-primary" style={{backgroundColor: '#4D606E!important'}}>
           <div class="container">
-            <a class="navbar-brand">Cluster Manager</a>
+            <span class="navbar-brand">Cluster Manager</span>
             <ul class="nav navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link">Settings</a>
+                <Link class="nav-link" to="/settings">Settings</Link>
               </li>
             </ul>
           </div>
