@@ -38,7 +38,7 @@ let DeviceStore = Reflux.createStore({
   listenables: [DeviceActions],
 
   init() {
-
+    
   },
 
   addDevice() {
