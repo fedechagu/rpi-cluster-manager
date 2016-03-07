@@ -32,13 +32,19 @@ class Dashboard extends React.Component {
     DeviceActions.addDevice();
   }
 
+  handleDelete = (id) => {
+    DeviceActions.deleteDevice(id)
+  }
+
   render() {
 
     if (this.state.isLoading) {
       return <div>Loading...</div>
     }
 
-    let devices = this.state.devices.map((device) => <Card link = { `/device/${device.id}`}  key ={device.id} title={device.name}>Status: {device.status}</Card>)
+    let devices = this.state.devices.map((device) => {
+      return <Card link = { `/device/${device.id}`}  key ={device.id} title={device.name} id = {device.id} handleDelete={this.handleDelete}>Status: {device.status}</Card>
+    })
 
     return (
       <div>

@@ -2,8 +2,17 @@ import React from 'react';
 import { Link } from "react-router";
 
 class Card extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  handleClick() {
+    this.props.handleDelete(this.props.id)
+  }
+
   render() {
-    const { title, link } = this.props;
+    const { title, link, id, handleDelete } = this.props;
 
     const imageStyle = {
       width: 4 + 'em',
@@ -14,8 +23,9 @@ class Card extends React.Component {
       color: 'white'
     }
     return (
-      <Link to={link}>
         <div class="card text-xs-center">
+          <div className = 'pull-right' onClick={() => this.handleClick()}>DELETE</div>
+          <Link to={link}>
           <img class="card-img-top" src="../../images/rpi_logo.png" class="" style={imageStyle}/>
             <div class="card-block">
               <h4 class="card-title">{ title }</h4>
@@ -24,8 +34,8 @@ class Card extends React.Component {
           <div class="card-footer text-muted" style={cardFooterStyle}>
             Last Update: { Math.round(Math.random() * 100, 2) } seconds ago
           </div>
+          </Link>
         </div>
-      </Link>
     );
   }
 };

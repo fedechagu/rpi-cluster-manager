@@ -6,15 +6,23 @@ let DeviceStore = Reflux.createStore({
   listenables: [DeviceActions],
 
   init() {
-    let mqttClient = mqtt.connect({host: 'localhost', port: 9002})
+    let mqttClient = mqtt.connect({ host: 'localhost', port: 9002 })
     mqttClient.on('connect', function () {
       mqttClient.subscribe('devices/list')
     })
 
-    mqttClient.on('message', function (topic, message) {
-      // message is Buffer
-      console.log(message.toString());
-    })
+    let that = this
+    mqttClient.on('message', this.devicesChanged)
+  },
+
+  devicesChanged(topic, message) {
+    let device = JSON.parse(message)
+    debugger;
+    if(device.new_val == null) {
+      //this.deleteDevice(device.old_val.id)
+    } else {
+      this.addDevice(device)
+    }
   },
 
   getInitialState() {
@@ -31,15 +39,19 @@ let DeviceStore = Reflux.createStore({
 
   },
 
-  addDevice() {
-    const device = {
-      id: Math.round((Math.random(1, 100000) * 100), 0),
-      name: 'test',
-      status: 'online'
-    };
 
+  addDevice(device) {
+    debugger;
     this.devices.push(device);
     this.trigger(this.devices);
+  },
+
+  deleteDevice(id) {
+    debugger;
+    const index = this.devices.findIndex(device => device.id == id)
+    this.devices.splice(index, 1)
+    this.trigger(this.devices)
+    console.log(this.devices)
   }
 
 });
