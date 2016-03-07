@@ -20,7 +20,7 @@ DeviceActions.deviceUpdated.listen(function() {
 });
 
 DeviceActions.deleteDevice.listen(function(id) {
-  axios.delete(`${baseUrl}/${id}`).then(this.completed).catch(this.failed)
+  axios.delete(`${baseUrl}/${id}`)
 })
 
 export default DeviceActions;

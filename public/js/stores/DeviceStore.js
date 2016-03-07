@@ -17,11 +17,11 @@ let DeviceStore = Reflux.createStore({
 
   devicesChanged(topic, message) {
     let device = JSON.parse(message)
-    debugger;
+    
     if(device.new_val == null) {
-      //this.deleteDevice(device.old_val.id)
+      this.deleteDevice(device.old_val.id)
     } else {
-      this.addDevice(device)
+      this.addDevice(device.new_val)
     }
   },
 
@@ -41,17 +41,14 @@ let DeviceStore = Reflux.createStore({
 
 
   addDevice(device) {
-    debugger;
     this.devices.push(device);
     this.trigger(this.devices);
   },
 
   deleteDevice(id) {
-    debugger;
     const index = this.devices.findIndex(device => device.id == id)
     this.devices.splice(index, 1)
     this.trigger(this.devices)
-    console.log(this.devices)
   }
 
 });
