@@ -1,8 +1,8 @@
-var os = require('os'),
-    mqtt = require('mqtt'),
-    stringify = require('json-stringify'),
-    r = require('rethinkdb');
-    client  = mqtt.connect('mqtt://localhost:1884');
+const os = require('os'),
+      mqtt = require('mqtt'),
+      stringify = require('json-stringify'),
+      r = require('rethinkdb'),
+      client  = mqtt.connect('mqtt://localhost:1884')
 
 var connection = null;
 r.connect( {host: 'localhost', port: 28015, db: 'rpi_cluster'}, function(err, conn) {

@@ -10,16 +10,14 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      devices: []
+      devices: [],
+      isLoading: false
     }
   }
 
-  componentWillMount() {
-    DeviceActions.loadDevices();
-  }
-
   componentDidMount() {
-    this.unsubscribe = DeviceStore.listen(this.updateState.bind(this));
+    DeviceActions.loadDevices();
+    this.unsubscribe = DeviceStore.listen(newState => this.updateState(newState));
   }
 
   componentWillUnmount() {
@@ -31,10 +29,16 @@ class Dashboard extends React.Component {
   }
 
   handleAdd = () => {
-    DeviceStore.addDevice();
+    DeviceActions.addDevice();
   }
 
   render() {
+
+    if (this.state.isLoading) {
+      return <div>Loading...</div>
+    }
+
+    let devices = this.state.devices.map((device) => <Card link = { `/device/${device.id}`}  key ={device.id} title={device.name}>Status: {device.status}</Card>)
 
     return (
       <div>
@@ -44,8 +48,7 @@ class Dashboard extends React.Component {
               <button class="btn btn-primary-outline pull-right" onClick={this.handleAdd}>Add</button>
               <br /><br />
               <div class="card-columns">
-                {this.state.devices.map((device) =>
-                  <Card link = {'/device/' + device.id}  key ={device.id} title={device.name}>Status: {device.status}</Card>)}
+                {devices}
               </div>
             </div>
           </div>

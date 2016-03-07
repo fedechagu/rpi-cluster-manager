@@ -1,16 +1,20 @@
 import Reflux from "reflux";
-import jQuery from 'jquery';
+import axios from 'axios';
 
 let DeviceActions = Reflux.createActions({
   'loadDevices': { children: ['progressed', 'completed', 'failed'] },
-  'addDevice': {}
+  'addDevice': {},
+  'deviceUpdated': {}
 });
 
 DeviceActions.loadDevices.listen(function() {
-  var that = this;
   this.progressed;
-  $.get('http://localhost:3000/devices').then(this.completed).fail(this.failed);
+  axios.get('http://localhost:3000/devices').then(this.completed).catch(this.failed);
+});
 
+DeviceActions.deviceUpdated.listen(function() {
+  console.log('add')
+  //axios.get('http://localhost:3000/devices').then(this.completed).catch(this.failed);
 });
 
 export default DeviceActions;
