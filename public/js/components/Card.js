@@ -1,18 +1,18 @@
-import React from 'react';
-import { Link } from "react-router";
+import React from 'react'
+import { Link } from 'react-router'
 
 class Card extends React.Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
   }
 
-  handleClick() {
+  handleClick () {
     this.props.handleDelete(this.props.id)
   }
 
-  render() {
-    const { title, link, id, handleDelete } = this.props;
+  render () {
+    const { title, link } = this.props
 
     const imageStyle = {
       width: 4 + 'em',
@@ -23,21 +23,29 @@ class Card extends React.Component {
       color: 'white'
     }
     return (
-        <div class="card text-xs-center">
+        <div className='card text-xs-center'>
           <div className = 'pull-right' onClick={() => this.handleClick()}>DELETE</div>
           <Link to={link}>
-          <img class="card-img-top" src="../../images/rpi_logo.png" class="" style={imageStyle}/>
-            <div class="card-block">
-              <h4 class="card-title">{ title }</h4>
-              <p class="card-text">{this.props.children}</p>
+            <img className='card-img-top' src='../../images/rpi_logo.png' style={imageStyle}/>
+            <div className='card-block'>
+              <h4 className='card-title'>{ title }</h4>
+              <p className='card-text'>{this.props.children}</p>
             </div>
-          <div class="card-footer text-muted" style={cardFooterStyle}>
-            Last Update: { Math.round(Math.random() * 100, 2) } seconds ago
-          </div>
+            <div className='card-footer text-muted' style={cardFooterStyle}>
+              Last Update: { Math.round(Math.random() * 100, 2) } seconds ago
+            </div>
           </Link>
         </div>
-    );
+    )
   }
-};
+}
 
-export default Card;
+Card.propTypes = {
+  children: React.PropTypes.element,
+  title: React.PropTypes.string,
+  link: React.PropTypes.object,
+  id: React.PropTypes.Integer,
+  handleDelete: React.PropTypes.func
+}
+
+export default Card

@@ -1,29 +1,27 @@
-import React from "react";
-import { Link } from "react-router";
+import React from 'react'
 
-import Nav from "../components/App/Nav";
-import Card from '../components/Card'
-import Progress from "../components/Progress"
-import DeviceActions from "../actions/DeviceActions";
-import DeviceStore from "../stores/DeviceStore";
+import Nav from '../components/App/Nav'
 
 class App extends React.Component {
 
-  render() {
-    const { location } = this.props;
+  render () {
     const containerStyle = {
-      marginTop: "20px"
-    };
+      marginTop: '20px'
+    }
 
     return (
       <div>
         <Nav />
-        <div class="container" style={containerStyle}>
+        <div className='container' style={containerStyle}>
           {this.props.children}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+App.propTypes = {
+  children: React.PropTypes.element
+}
+
+export default App

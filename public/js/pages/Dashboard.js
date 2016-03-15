@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router";
+import React from 'react'
+import { Link } from 'react-router'
 
-import Nav from "../components/App/Nav";
+import Nav from '../components/App/Nav'
 import Card from '../components/Card'
-import DeviceActions from "../actions/DeviceActions";
-import DeviceStore from "../stores/DeviceStore";
+import DeviceActions from '../actions/DeviceActions'
+import DeviceStore from '../stores/DeviceStore'
 
 class Dashboard extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       devices: [],
       isLoading: false
@@ -16,20 +16,20 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    DeviceActions.loadDevices();
-    this.unsubscribe = DeviceStore.listen(newState => this.updateState(newState));
+    DeviceActions.loadDevices()
+    this.unsubscribe = DeviceStore.listen(newState => this.updateState(newState))
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    this.unsubscribe()
   }
 
   updateState(newState) {
-    this.setState({devices: newState});
+    this.setState({devices: newState})
   }
 
   handleAdd = () => {
-    DeviceActions.addDevice();
+    DeviceActions.addDevice()
   }
 
   handleDelete = (id) => {
@@ -48,19 +48,19 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-          <div class="row">
-            <div class="col-lg-12">
-              <h1>Devices</h1>
-              <button class="btn btn-primary-outline pull-right" onClick={this.handleAdd}>Add</button>
-              <br /><br />
-              <div class="card-columns">
+        <div class='row'>
+          <div class='col-lg-12'>
+            <h1>Devices</h1>
+            <button class='btn btn-primary-outline pull-right' onClick={this.handleAdd}>Add</button>
+            <br /><br />
+              <div class='card-columns'>
                 {devices}
               </div>
             </div>
           </div>
       </div>
-    );
+    )
   }
 }
 
-export default Dashboard;
+export default Dashboard

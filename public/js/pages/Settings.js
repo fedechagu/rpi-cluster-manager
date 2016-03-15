@@ -1,27 +1,28 @@
-import React from "react";
-import { Link } from "react-router";
-
-import Nav from "../components/App/Nav";
+import React from 'react'
 
 class Settings extends React.Component {
 
-  render() {
-    const { location } = this.props;
+  render () {
+    const { location } = this.props
     const containerStyle = {
-      marginTop: "20px"
-    };
+      marginTop: '20px'
+    }
 
     return (
       <div>
-        <div class="row">
-          <div class="col-lg-12">
+        <div className='row'>
+          <div className='col-lg-12'>
             <h1>Settings</h1>
-              hello world
+            hello world
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Settings;
+Settings.propTypes = {
+  location: React.PropTypes.object
+}
+
+export default Settings
