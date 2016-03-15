@@ -13,7 +13,7 @@ r.connect({host: 'localhost', port: 28015, db: 'rpi_cluster'}, function (err, co
   r.table('devices').changes().run(connection, function (err, cursor) {
     cursor.each(function (err, row) {
       if (err) throw err
-      mqttClient.publish('devices/list', stringify(row))
+      mqttClient.publish('/devices', stringify(row))
     })
   })
 })

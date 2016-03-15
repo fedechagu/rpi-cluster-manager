@@ -16,7 +16,14 @@ DeviceActions.loadDevices.listen(function () {
 })
 
 DeviceActions.deviceUpdated.listen(function () {
-  axios.get('http://localhost:3000/devices').then(this.completed).catch(this.failed)
+  axios.get(baseUrl).then(this.completed).catch(this.failed)
+})
+
+DeviceActions.addDevice.listen(function () {
+  let device = {name: 'test', ip: '127.0.0.1'}
+  axios.post(baseUrl, device).then(function (results) {
+    
+  })
 })
 
 DeviceActions.deleteDevice.listen(function (id) {

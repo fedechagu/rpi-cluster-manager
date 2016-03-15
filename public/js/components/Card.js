@@ -41,10 +41,10 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  children: React.PropTypes.element,
+  children: React.PropTypes.node,
   title: React.PropTypes.string,
-  link: React.PropTypes.object,
-  id: React.PropTypes.Integer,
+  link: React.PropTypes.string,
+  id: React.PropTypes.number,
   handleDelete: React.PropTypes.func
 }
 
