@@ -19,10 +19,9 @@ DeviceActions.deviceUpdated.listen(function () {
   axios.get(baseUrl).then(this.completed).catch(this.failed)
 })
 
-DeviceActions.addDevice.listen(function () {
-  let device = {name: 'test', ip: '127.0.0.1'}
-  axios.post(baseUrl, device).then(function (results) {
-    
+DeviceActions.addDevice.listen(function (name, ip) {
+  axios.post(baseUrl, {name, ip}).then(function (results) {
+    console.log(results)
   })
 })
 

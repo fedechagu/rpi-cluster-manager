@@ -9,7 +9,9 @@ class Dashboard extends React.Component {
     super(props)
     this.state = {
       devices: [],
-      isLoading: false
+      isLoading: false,
+      name: '',
+      ip: ''
     }
   }
 
@@ -26,12 +28,20 @@ class Dashboard extends React.Component {
     this.setState({devices: newState})
   }
 
-  handleAdd () {
-    DeviceActions.addDevice()
+  handleAdd = (e) => {
+    DeviceActions.addDevice(this.state.name, this.state.ip)
   }
 
   handleDelete (id) {
     DeviceActions.deleteDevice(id)
+  }
+
+  handleNameChange = (e) => {
+    this.setState({name: e.target.value})
+  }
+
+  handleIpChange = (e) => {
+    this.setState({ip: e.target.value})
   }
 
   render () {
@@ -40,7 +50,16 @@ class Dashboard extends React.Component {
     }
 
     let devices = this.state.devices.map((device) => {
-      return <Card link = { `/device/${device.id}`} key ={device.id} title={device.name} id = {device.id} handleDelete={this.handleDelete}>Status: {device.status}</Card>
+      return (
+      <Card
+        link={ `/device/${device.id}`}
+        key={device.id}
+        title={device.name}
+        id={device.id}
+        handleDelete={this.handleDelete}>
+        IP: {device.ip}
+      </Card>
+      )
     })
 
     return (
@@ -49,7 +68,10 @@ class Dashboard extends React.Component {
           <div className='col-lg-12'>
             <h1>Devices</h1>
             <button className='btn btn-primary pull-right' onClick={this.handleAdd}>Add</button>
-             Name: <input type='text' className='input-small'/>
+            Name:
+            <input type='text' className='input-small' value={this.state.name} onChange={this.handleNameChange}/>
+            IP:
+            <input type='text' className='input-small' value={this.state.ip} onChange={this.handleIpChange}/>
             <br /><br />
             <div className='card-columns'>
               {devices}

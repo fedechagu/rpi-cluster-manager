@@ -32,7 +32,7 @@ class Card extends React.Component {
               <p className='card-text'>{this.props.children}</p>
             </div>
             <div className='card-footer text-muted' style={cardFooterStyle}>
-              Last Update: { Math.round(Math.random() * 100, 2) } seconds ago
+              Status: Online
             </div>
           </Link>
         </div>
@@ -44,7 +44,7 @@ Card.propTypes = {
   children: React.PropTypes.node,
   title: React.PropTypes.string,
   link: React.PropTypes.string,
-  id: React.PropTypes.number,
+  id: React.PropTypes.string,
   handleDelete: React.PropTypes.func
 }
 

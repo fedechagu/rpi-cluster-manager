@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "standard",
-    "start": "nodemon --exec npm run babel-node -- ./api/bin/www",
+    "start": "nodemon --ignore public/ --exec npm run babel-node -- ./api/bin/www",
     "dev": "webpack-dev-server --content-base public --inline --hot --port 9000",
     "babel-node": "babel-node --presets=es2015"
   },
