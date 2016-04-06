@@ -5,7 +5,11 @@ var path = require('path')
 module.exports = {
   context: path.join(__dirname, 'public'),
   devtool: debug ? 'inline-sourcemap' : null,
-  entry: './js/client.js',
+  entry: [
+    'webpack-dev-server/client?http://localhost:9000',
+    'webpack/hot/only-dev-server',
+    './js/client.js'
+  ],
   module: {
     loaders: [
       {
@@ -20,10 +24,18 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + '/public/',
-    filename: 'client.min.js'
+    path: __dirname + '/dist',
+    filename: 'bundle.js',
+    publicPath: '/'
   },
-  plugins: debug ? [] : [
+  devServer: {
+    contentBase: './public',
+    hot: true,
+    port: 9000
+  },
+  plugins: debug ? [
+    new webpack.HotModuleReplacementPlugin()
+  ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
